@@ -58,8 +58,8 @@ _tag('div#'.$baseTabId.'_effects',
     _tag('li.dm_form_element.show_pager.clearfix',
       $form['show_pager']->label(__('Show pager'))->field()->error().
       _tag('p.dm_help', __('Check this box to enable the pager')).
-      _tag('p.dm_help', __('Make sure to add the path to the full jQuery cycle library in your apps.yml'))
-      _tag('p.dm_help', "<pre>all:\n  dmWidgetGalleryPlugin:\n    js: cycle/jquery.cycle.min</pre>"))
+      _tag('p.dm_help', __('Make sure to add the path to the full jQuery cycle library in your apps.yml').': ').
+      _tag('p.dm_help', "all:<br/> &nbsp;dmWidgetGalleryPlugin:<br/> &nbsp; &nbsp;  js: cycle/jquery.cycle.min")
     )
   )
 ),

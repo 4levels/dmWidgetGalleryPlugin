@@ -99,7 +99,7 @@ class dmWidgetContentGalleryView extends dmWidgetPluginView
     $html = $helper->open('ol.dm_widget_content_gallery.list', array('json' => array(
       'animation'  => $vars['animation'],
       'delay'      => dmArray::get($vars, 'delay', 3),
-      'pager' => '#mediaPager'.$this->widget['id']
+      'pager'      => '#mediaPager'.$this->widget['id']
     )));
     
     foreach($vars['medias'] as $media)

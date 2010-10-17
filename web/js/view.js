@@ -18,7 +18,8 @@
       // launch jQuery cycle
       $gallery.cycle({
         timeout:     options.delay * 1000,                      // convert to ms
-        height:      $gallery.find('img:first').attr('height')  // use first image height
+        height:      $gallery.find('img:first').attr('height'), // use first image height
+        pager:       options.pager
       });
     }
     else if(options.animation == 'custom')

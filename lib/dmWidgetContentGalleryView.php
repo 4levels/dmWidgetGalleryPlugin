@@ -9,7 +9,11 @@ class dmWidgetContentGalleryView extends dmWidgetPluginView
     
     $this->addRequiredVar(array('medias', 'method', 'animation'));
 
-    $this->addJavascript(array('dmWidgetGalleryPlugin.view', 'dmWidgetGalleryPlugin.cycle'));
+    $this->addJavascript(array('dmWidgetGalleryPlugin.view',
+      sfConfig::get('app_dmWidgetGalleryPlugin_js')
+        ? sfConfig::get('app_dmWidgetGalleryPlugin_js')
+        : 'dmWidgetGalleryPlugin.cycle'));
+    
   }
 
   protected function filterViewVars(array $vars = array())
@@ -93,8 +97,9 @@ class dmWidgetContentGalleryView extends dmWidgetPluginView
     $helper = $this->getHelper();
     
     $html = $helper->open('ol.dm_widget_content_gallery.list', array('json' => array(
-      'animation' => $vars['animation'],
-      'delay'     => dmArray::get($vars, 'delay', 3)
+      'animation'  => $vars['animation'],
+      'delay'      => dmArray::get($vars, 'delay', 3),
+      'pager' => '#mediaPager'.$this->widget['id']
     )));
     
     foreach($vars['medias'] as $media)
@@ -106,6 +111,14 @@ class dmWidgetContentGalleryView extends dmWidgetPluginView
     }
     
     $html .= '</ol>';
+
+    // add media numbers
+    if ($vars['show_pager'])
+    {
+      $html .= $helper->open('div#mediaPager'.$this->widget['id'].'.pager');
+      $html .= $helper->close('div');
+    }
+
     
     if ($this->isCachable())
     {

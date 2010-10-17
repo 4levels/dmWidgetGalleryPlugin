@@ -53,6 +53,9 @@ class dmWidgetContentGalleryForm extends dmWidgetPluginForm
       $this->setDefault('method', dmConfig::get('image_resize_method', 'center'));
     }
 
+    $this->widgetSchema['show_pager'] = new sfWidgetFormInputCheckbox();
+    $this->validatorSchema['show_pager'] = new sfValidatorBoolean();
+
     $animations = $this->getService('i18n')->translateArray(self::$animations);
     $this->widgetSchema['animation'] = new sfWidgetFormSelect(array(
       'choices' => $animations

@@ -113,7 +113,7 @@ class dmWidgetContentGalleryView extends dmWidgetPluginView
     $html .= '</ol>';
 
     // add media numbers
-    if ($vars['show_pager'])
+    if (isset($vars['show_pager']) && $vars['show_pager'])
     {
       $html .= $helper->open('div#mediaPager'.$this->widget['id'].'.pager');
       $html .= $helper->close('div');
